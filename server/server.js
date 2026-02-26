@@ -1,11 +1,12 @@
 // importing required modules
 const express = require('express');
-const db = require('./models/db')
-const userRoutes = require('./routes/userRoutes')
-const PORT = 8000;
-
+const db = require('./config/db');
+const userRoutes = require('./routes/userRoutes');
+const env = require("dotenv");
 // creating app instance
 const app = express();
+
+env.config();
 
 // connecting the datatbase
 app.get('/', async (req, res) => {
@@ -14,9 +15,9 @@ app.get('/', async (req, res) => {
         res.json({
             message: 'Database connected successfully 🚀'
         });
-    } catch(errr) {
+    } catch(error) {
         res.status(500).json({
-            error: 'Database conection failed'
+            error: 'Database connection failed'
         });
     }
 });
@@ -27,7 +28,8 @@ app.use(express.json());
 // routes
 app.use('/users', userRoutes.router);
 
-
+// starting the server
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
     console.log(`Server running at port: ${PORT}`);
 });
