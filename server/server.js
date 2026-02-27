@@ -2,11 +2,17 @@
 const express = require('express');
 const db = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
-const env = require("dotenv");
+const env = require('dotenv');
+const path = require('path');
+const { log } = require('console');
 // creating app instance
 const app = express();
 
+
 env.config();
+
+// serving the index.html file
+app.use(express.static('../client/public'));
 
 // connecting the datatbase
 app.get('/', async (req, res) => {
