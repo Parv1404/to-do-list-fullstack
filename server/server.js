@@ -5,17 +5,18 @@ const userRoutes = require('./routes/userRoutes');
 const env = require('dotenv');
 const path = require('path');
 const { log } = require('console');
+const { dirname } = require('path');
 // creating app instance
 const app = express();
 
 
 env.config();
 
-// serving the index.html file
-app.use(express.static('../client/public'));
+// Sending the index.html from the public folder inside client folder
+app.use(express.static(path.join(__dirname, '../client/public')));
 
 // connecting the datatbase
-app.get('/', async (req, res) => {
+app.get('/test-db', async (req, res) => {
     try {
         const [rows] = await db.query('SELECT 1');
         res.json({
@@ -37,4 +38,5 @@ app.use('/users', userRoutes.router);
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
     console.log(`Server running at port: ${PORT}`);
+
 });
