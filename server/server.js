@@ -2,6 +2,7 @@
 const express = require('express');
 const db = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
+const toDoRoutes = require('./routes/toDoRoutes')
 const env = require('dotenv');
 const path = require('path');
 const { log } = require('console');
@@ -33,10 +34,11 @@ app.use(express.json());
 
 // routes
 app.use('/users', userRoutes.router);
+app.use('/todo', toDoRoutes.router);
+
 
 // starting the server
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
     console.log(`Server running at port: ${PORT}`);
-
 });
