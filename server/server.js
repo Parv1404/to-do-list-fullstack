@@ -27,7 +27,6 @@ app.get('/', async (req, res) => {
         });
     }
 });
-
 // middlewares
 app.use(express.json());
 
