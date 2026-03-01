@@ -1,3 +1,20 @@
+function togglePassword(inputId, btn) {
+    const input = document.getElementById(inputId);
+    const eyeIcon = btn.querySelector('.icon-eye');
+    const eyeOffIcon = btn.querySelector('.icon-eye-off');
+    if (input.type === 'password') {
+        input.type = 'text';
+        eyeIcon.style.display = 'block';
+        eyeOffIcon.style.display = 'none';
+        btn.setAttribute('aria-label', 'Hide password');
+    } else {
+        input.type = 'password';
+        eyeIcon.style.display = 'none';
+        eyeOffIcon.style.display = 'block';
+        btn.setAttribute('aria-label', 'Show password');
+    }
+}
+
 function switchTab(tab) {
     // Hide all forms
     const forms = document.querySelectorAll('.form-container');
@@ -69,7 +86,14 @@ document.getElementById("signin").addEventListener("submit", async (e) => {
         })
         const data  = await response.json();
         if(!response.ok) {
-            alert(data.message || "Something went wrong!")
+            if(data.message === "User not found, please sign up first") {
+                alert(data.message);
+                switchTab('signup');
+                return;
+            } else {
+                alert(data.message || "Something went wrong!");
+                return;
+            }
         } else {
             const toast = document.getElementById("toast");
             toast.classList.add("show");

@@ -147,6 +147,32 @@
         margin-top: 4rem;
     }
 
+    .footer-contact {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+    }
+
+    .footer-name {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    .footer-linkedin {
+        display: inline-flex;
+        color: white;
+        transition: opacity 0.3s;
+    }
+
+    .footer-linkedin:hover {
+        opacity: 0.8;
+    }
+
+    .footer-linkedin svg {
+        display: block;
+    }
+
     @media (max-width: 768px) {
         h1 {
             font-size: 2rem;
