@@ -60,7 +60,7 @@ document.getElementById("signin").addEventListener("submit", async (e) => {
     const password = document.getElementById("signin-password").value;
     // Sending data to backend
     try {
-        const response = await fetch('users/login', {
+        const response = await fetch('/users/login', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -69,10 +69,14 @@ document.getElementById("signin").addEventListener("submit", async (e) => {
         })
         const data  = await response.json();
         if(!response.ok) {
-            alert(data.body || "Something went wrong!")
+            alert(data.message || "Something went wrong!")
         } else {
-            alert("Logged in successfully");
-            // document.getElementById("signin").reset();
+            const toast = document.getElementById("toast");
+            toast.classList.add("show");
+            localStorage.setItem("data", JSON.stringify(data));
+            setTimeout(() => {
+                window.location.href = "./dashboard.html";
+            }, 2000);
         }
     } catch(error) {
         console.error("Error:", error);

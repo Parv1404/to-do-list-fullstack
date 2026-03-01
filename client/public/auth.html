@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In / Sign Up - TaskFlow</title>
+    <link rel="icon" href="favicon.ico">
     <style>
         * {
             margin: 0;
@@ -207,6 +208,24 @@
                 font-size: 0.9rem;
             }
         }
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
@@ -289,16 +308,8 @@
         <p>&copy; 2024 TaskFlow. All rights reserved. | Built with simplicity in mind.</p>
     </footer>
 
-    <script src="auth.js">
-        // document.getElementById('signin').addEventListener('submit', function(e) {
-        //     e.preventDefault();
-        //     const email = document.getElementById('signin-email').value;
-        //     const password = document.getElementById('signin-password').value;
-        //     console.log('Sign In:', { email, password });
-        //     // Send data to your backend
-        // });
+    <div id="toast" class="toast">Logged in successfully</div>
 
-        
-    </script>
+    <script src="auth.js"></script>
 </body>
 </html>
