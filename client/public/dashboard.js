@@ -20,7 +20,7 @@ function getAuthToken() {
 function ensureAuthenticated() {
   const data = getAuthData();
   if (!data || !data.token) {
-    window.location.href = "auth.html";
+    window.location.href = "/auth";
     return null;
   }
   return data;
@@ -40,7 +40,7 @@ function setUserName() {
 async function loadTasks() {
   const token = getAuthToken();
   if (!token) {
-    window.location.href = "auth.html";
+    window.location.href = "/auth";
     return;
   }
 
@@ -55,7 +55,7 @@ async function loadTasks() {
 
     if (response.status === 401) {
       localStorage.removeItem("data");
-      window.location.href = "auth.html";
+      window.location.href = "/auth";
       return;
     }
 
@@ -94,7 +94,7 @@ document.getElementById("addTaskForm").addEventListener("submit", async (e) => {
 
   const token = getAuthToken();
   if (!token) {
-    window.location.href = "auth.html";
+    window.location.href = "/auth";
     return;
   }
 
@@ -209,7 +209,7 @@ function renderTasks() {
 async function toggleComplete(id) {
   const token = getAuthToken();
   if (!token) {
-    window.location.href = "auth.html";
+    window.location.href = "/auth";
     return;
   }
 
@@ -242,7 +242,7 @@ async function deleteTask(id) {
 
   const token = getAuthToken();
   if (!token) {
-    window.location.href = "auth.html";
+    window.location.href = "/auth";
     return;
   }
 
@@ -304,7 +304,7 @@ document.getElementById("editTaskForm").addEventListener("submit", async (e) => 
 
   const token = getAuthToken();
   if (!token) {
-    window.location.href = "auth.html";
+    window.location.href = "/auth";
     return;
   }
 
@@ -380,7 +380,7 @@ function escapeHtml(text) {
 function logout() {
   if (!confirm("Are you sure you want to logout?")) return;
   localStorage.removeItem("data");
-  window.location.href = "auth.html";
+  window.location.href = "/authorization";
 }
 
 window.addEventListener("click", (e) => {

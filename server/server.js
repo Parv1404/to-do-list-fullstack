@@ -13,7 +13,21 @@ const app = express();
 
 env.config();
 
-// Sending the index.html from the public folder inside client folder
+// Sending the index.html file when the root route is accessed
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/public/index.html'));
+});
+
+// routing for auth.html file when get started button is clicked
+app.get('/authorization', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/public/auth.html'));
+});
+// serving the dashboard.html file when the dashboard route is accessed
+app.get('/dashboard', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/public/dashboard.html'));
+});
+
+// serve static assets from the client/public directory
 app.use(express.static(path.join(__dirname, '../client/public')));
 
 // connecting the datatbase

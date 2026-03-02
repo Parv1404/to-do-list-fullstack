@@ -1,20 +1,3 @@
-function togglePassword(inputId, btn) {
-    const input = document.getElementById(inputId);
-    const eyeIcon = btn.querySelector('.icon-eye');
-    const eyeOffIcon = btn.querySelector('.icon-eye-off');
-    if (input.type === 'password') {
-        input.type = 'text';
-        eyeIcon.style.display = 'block';
-        eyeOffIcon.style.display = 'none';
-        btn.setAttribute('aria-label', 'Hide password');
-    } else {
-        input.type = 'password';
-        eyeIcon.style.display = 'none';
-        eyeOffIcon.style.display = 'block';
-        btn.setAttribute('aria-label', 'Show password');
-    }
-}
-
 function switchTab(tab) {
     // Hide all forms
     const forms = document.querySelectorAll('.form-container');
@@ -43,7 +26,13 @@ document.getElementById("signup").addEventListener("submit", async (e) => {
     const password = document.getElementById('signup-password').value;
     const confirm = document.getElementById('signup-confirm').value;
     if(password !== confirm) {
-        alert("Passwords do not match!");
+        alert("Passwords do not match, re-enter the passwords!");
+        // empty the password fields
+        document.getElementById('signup-password').value = '';
+        document.getElementById('signup-confirm').value = '';
+        // focus on the password fields
+        document.getElementById('signup-password').focus();
+        document.getElementById('signup-confirm').focus();
         return; 
     } else {
         // Sending data to backend
@@ -99,8 +88,11 @@ document.getElementById("signin").addEventListener("submit", async (e) => {
             toast.classList.add("show");
             localStorage.setItem("data", JSON.stringify(data));
             setTimeout(() => {
-                window.location.href = "./dashboard.html";
+                window.location.href = "/dashboard";
             }, 2000);
+            setTimeout(() => {
+                toast.classList.remove("show");
+            }, 3000);
         }
     } catch(error) {
         console.error("Error:", error);
@@ -108,3 +100,27 @@ document.getElementById("signin").addEventListener("submit", async (e) => {
     }
 });
 
+// // Detect \"back to auth\" while still logged in and confirm logout
+// window.addEventListener('load', () => {
+//     const raw = localStorage.getItem('data');
+//     if (!raw) return;
+
+//     let stored;
+//     try {
+//         stored = JSON.parse(raw);
+//     } catch {
+//         return;
+//     }
+
+//     if (!stored || !stored.token) return;
+
+//     const proceed = window.confirm(
+//         "You are currently signed in. Going back to this page will log you out. Do you want to log out now?"
+//     );
+
+//     if (proceed) {
+//         localStorage.removeItem('data');
+//     } else {
+//         window.location.href = '/dashboard';
+//     }
+// });
