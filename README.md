@@ -1,8 +1,10 @@
 <img src = "screenshot.png" alt = "Sample image">
     
 <h1><u>TaskFlow</u> - Your daily companion</h1>
-<p>A simple and intuitive to-do list app to help you manage your tasks and boost your productivity on daily basis
-<a href = "https://to-do-list-fullstack-ocxs.onrender.com"><h4> Access the application by clicking on this text</h4></a>
+<p>A simple and intuitive to-do list app to help you manage your tasks and boost your productivity on daily basis</p>
+<div>
+    Click here -> <a href = "https://to-do-list-fullstack-ocxs.onrender.com">Try the application</a> 🚀
+</div>
 <hr>
 <h2>Features : </h2>
 <ul>
