@@ -47,5 +47,5 @@
 <p>The project has also been deployed on using Render for backend and Railway for database, you can access it <a href="https://to-do-list-fullstack-ocxs.onrender.com">here</a></p>
 <hr>
 <h2>Author</h2>
-<p>This project was created and developed by <a href="https://github.com/Parv1404">Parv Aggarwal</a></p>
+<p>This project was created and developed by <a href="www.linkedin.com/in/parv-aggarwal-85519431a">Parv Aggarwal</a></p>
 <hr>
