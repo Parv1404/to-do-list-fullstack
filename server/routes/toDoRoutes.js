@@ -15,10 +15,11 @@ router.post('/post', authMiddleware, getTodoController);
 router.delete('/delete/:id', authMiddleware, deleteTodoController);
 
 // update todo
-router.patch('update/:id', authMiddleware, updateTodoController);
+router.patch('/update/:id', authMiddleware, updateTodoController);
 
 // update todo status
 router.patch('/update-status/:id', authMiddleware, markTodoCompletedController);
 
 module.exports = {router};
+
 

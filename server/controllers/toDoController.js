@@ -72,6 +72,8 @@ const updateTodoController = async (req, res) => {
         const { id } = req.params;
         const { title, description } = req.body;
         const updatedTodo = await toDoModel.updateToDo(id, title, description);
+        // marking the todo as incomplete when title or description is updated
+        await toDoModel.updateToDoStatus(id, "incomplete");
         res.status(200).send({
             success: true,
             message: "Todo updated successfully",

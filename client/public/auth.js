@@ -99,28 +99,3 @@ document.getElementById("signin").addEventListener("submit", async (e) => {
         alert("An error occurred. Please try again.");
     }
 });
-
-// // Detect \"back to auth\" while still logged in and confirm logout
-// window.addEventListener('load', () => {
-//     const raw = localStorage.getItem('data');
-//     if (!raw) return;
-
-//     let stored;
-//     try {
-//         stored = JSON.parse(raw);
-//     } catch {
-//         return;
-//     }
-
-//     if (!stored || !stored.token) return;
-
-//     const proceed = window.confirm(
-//         "You are currently signed in. Going back to this page will log you out. Do you want to log out now?"
-//     );
-
-//     if (proceed) {
-//         localStorage.removeItem('data');
-//     } else {
-//         window.location.href = '/dashboard';
-//     }
-// });

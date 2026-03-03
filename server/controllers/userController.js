@@ -80,7 +80,7 @@ const loginController = async (req, res) => {
                 username: user.username,
             }
         });
-        
+
     } catch (error) {
         console.log(error);
         res.status(500).send({

@@ -23,6 +23,10 @@ const updateToDo = async (id, title, description) => {
 }
 
 const updateToDoStatus = async (id, status) => {
+    if(status === "incomplete") {
+        const [result, fields] = await db.query('UPDATE todo SET isCompleted = ? WHERE id = ?', [0, id]);
+        return result.affectedRows > 0;
+    }
     if(status === "completed") {
         const [result, fields] = await db.query('UPDATE todo SET isCompleted = ? WHERE id = ?', [1, id]);
         return result.affectedRows > 0;
